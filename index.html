@@ -4,15 +4,47 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pq tu ta olhando aqui em cima? </title>
+    <title>Ta olhando oq minha linda?</title>
 
     <style>
-        body{
+        /* Para centralizar todo o conteúdo da página */
+        body {
             background-color: rgb(151, 50, 19);
+            display: flex; /* Usando flexbox */
+            justify-content: center; /* Alinha horizontalmente */
+            align-items: center; /* Alinha verticalmente */
+            height: 100vh; /* 100% da altura da tela */
+            margin: 0; /* Remove margens padrões do body */
+            position: relative; /* Necessário para os emojis ficarem atrás */
         }
 
-        .painel{
-            margin: auto;
+        /* Emojis de flores que vão cobrir a tela */
+        .flower-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: -1; /* Coloca os emojis atrás do conteúdo */
+            pointer-events: none; /* Garante que os emojis não interfiram na interação com o conteúdo */
+        }
+
+        .flower-background span {
+            font-size: 30px;
+            position: absolute;
+            animation: float 5s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translate(0, 0); }
+            25% { transform: translate(100px, -100px); }
+            50% { transform: translate(0, -200px); }
+            75% { transform: translate(-100px, -100px); }
+            100% { transform: translate(0, 0); }
+        }
+
+        /* Painel de conteúdo */
+        .painel {
             background-color: white;
             width: 500px;
             height: 500px;
@@ -20,8 +52,19 @@
             text-align: center;
             padding-top: 50px;
             font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            position: relative;
+            z-index: 1; /* Garante que o conteúdo da painel fique à frente dos emojis */
         }
-        #sim{
+
+        img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 300px; /* Ajuste o tamanho conforme necessário */
+            height: auto; /* Mantém a proporção original */
+        }
+
+        #sim {
             height: 40px;
             width: 60px;
             background-color: rgb(105, 63, 23);
@@ -30,7 +73,8 @@
             color: white;
             margin-left: -50px;
         }
-        #nao{
+
+        #nao {
             position: absolute;
             height: 40px;
             width: 60px;
@@ -42,26 +86,46 @@
         }
 
     </style>
-
 </head>
 <body>
 
+    <!-- Emojis de flores no fundo -->
+    <div class="flower-background">
+        <span style="left: 5%; top: 10%;">🌸</span>
+        <span style="left: 15%; top: 20%;">🌺</span>
+        <span style="left: 25%; top: 30%;">🌻</span>
+        <span style="left: 35%; top: 10%;">🌷</span>
+        <span style="left: 45%; top: 50%;">🌼</span>
+        <span style="left: 55%; top: 70%;">💐</span>
+        <span style="left: 65%; top: 60%;">🌹</span>
+        <span style="left: 75%; top: 40%;">🌸</span>
+        <span style="left: 85%; top: 30%;">🌺</span>
+        <span style="left: 10%; top: 80%;">🌻</span>
+        <span style="left: 30%; top: 70%;">🌷</span>
+        <span style="left: 50%; top: 90%;">🌼</span>
+        <span style="left: 70%; top: 80%;">💐</span>
+        <span style="left: 90%; top: 60%;">🌹</span>
+        <span style="left: 10%; top: 40%;">🌸</span>
+        <span style="left: 20%; top: 50%;">🌺</span>
+        <span style="left: 40%; top: 60%;">🌻</span>
+        <span style="left: 60%; top: 50%;">🌷</span>
+        <span style="left: 80%; top: 20%;">🌼</span>
+    </div>
+
     <div class="painel">
-        <h1> Boa tarde, Srta.Marion</h1>
+        <h1>Olá Srta.Marion, por acaso não aceita</h1>
 
-        <img src="gatinho_tomando_caf_GiF" alt="animaçâo">
+        <img src="gatinho_tomando_caf_GiF.gif" alt="animação" width="300" height="auto" style="display: block; margin-left: auto; margin-right: auto;">
 
-        <h2>aceita sair tomar um café comigo? </h2>
-        
+        <h2>tomar um café comigo?</h2>
 
-        <a href="https://www.youtube.com/watch?v=oRvND-r57Us"><button id="sim" > Sim! </button></a>
-        <button onmouseover="fuja()" id="nao"> Não! </button>
-        
+        <a href="https://www.youtube.com/watch?v=oRvND-r57Us"><button id="sim">Sim!</button></a>
+        <button onmouseover="fuja()" id="nao">Não!</button>
     </div>
 
     <script>
-        function fuja(){
-            var botaoNao = document.getElementById("nao")
+        function fuja() {
+            var botaoNao = document.getElementById("nao");
 
             var larguraJanela = window.innerWidth;
             var alturaJanela = window.innerHeight;
@@ -74,13 +138,8 @@
 
             botaoNao.style.left = aleatorioX + "px";
             botaoNao.style.top = aleatorioY + "px";
-
-
         }
     </script>
 
-
-
-    
 </body>
 </html>
